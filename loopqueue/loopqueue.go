@@ -38,7 +38,7 @@ func (q *loopQueue) GetSize() int {
 }
 
 func (q *loopQueue) getCapacity() int {
-	return q.size
+	return cap(q.data)
 }
 
 func (q *loopQueue) isEmpty() bool {
