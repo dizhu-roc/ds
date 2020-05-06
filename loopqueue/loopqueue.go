@@ -84,11 +84,12 @@ func (q *loopQueue) GetFront() (interface{}, error) {
 func (q *loopQueue) String() string {
 	var buffer bytes.Buffer
 
-	buffer.WriteString("LoopQueue: ")
-	buffer.WriteString("Front [")
+	buffer.WriteString("循环队列: 队长: ")
+	buffer.WriteString(fmt.Sprint(q.getCapacity()))
+	buffer.WriteString("队首 [")
 	for i := 0; i < q.size; i++ {
-		buffer.WriteString(fmt.Sprint(q.data[(q.front+i)%q.GetSize()]))
-		if (q.front+i)%q.getCapacity() != q.rear {
+		buffer.WriteString(fmt.Sprint(q.data[(q.front+i)%q.getCapacity()]))
+		if (q.front+i)%q.getCapacity() != q.rear-1 {
 			buffer.WriteString(", ")
 		}
 	}
